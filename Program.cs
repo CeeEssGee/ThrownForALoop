@@ -6,49 +6,63 @@ List<Product> products = new List<Product>()
         Name = "Football",
         Color= "brown",
         Price = 15,
-        Sold = false
+        Sold = false,
+        StockDate = new DateTime(2022, 10, 20),
+        ManufactureYear = 2010
     },
     new Product()
     {
         Name = "Hockey Stick",
         Color = "yellow",
         Price = 12,
-        Sold = false
+        Sold = false,
+        StockDate = new DateTime(2021, 05, 23),
+        ManufactureYear = 2019
     },
     new Product()
     {
         Name = "Boomerang",
         Color = "red",
         Price = 10,
-        Sold = false
+        Sold = false,
+        StockDate = new DateTime(2023, 07, 26),
+        ManufactureYear = 2021
     },
     new Product()
     {
         Name = "Basketball",
         Color = "orange",
         Price = 15,
-        Sold = false
+        Sold = true,
+        StockDate = new DateTime(2023, 06, 01),
+        ManufactureYear = 2022
     },
     new Product()
     {
         Name = "Frisbee",
         Color = "maroon",
         Price = 10,
-        Sold = false
+        Sold = false,
+        StockDate = new DateTime(2023, 08, 11),
+        ManufactureYear = 2022
     },
     new Product()
     {
         Name = "Golf Club",
         Color = "silver",
         Price = 20,
-        Sold = false
+        Sold = false,
+        StockDate = new DateTime(2020, 05, 10),
+        ManufactureYear = 2019
     },
     new Product()
     {
         Name = "Hulahoop",
         Color = "multi-colored",
         Price = 8,
-        Sold = false
+        Sold = false,
+        StockDate = new DateTime(2021, 02, 25),
+        ManufactureYear = 2020
     }
 };
 
@@ -74,4 +88,12 @@ while (response > products.Count || response < 1)
 }
 
 Product chosenProduct = products[response - 1];
-Console.WriteLine($"You chose: A {chosenProduct.Color} {chosenProduct.Name}, which costs {chosenProduct.Price} dollars and is {(chosenProduct.Sold ? "" : "not ")}sold.");
+
+DateTime now = DateTime.Now;
+
+TimeSpan timeInStock = now - chosenProduct.StockDate;
+
+Console.WriteLine(@$"You chose: 
+A {chosenProduct.Color} {chosenProduct.Name}, which costs {chosenProduct.Price} dollars.
+It is {now.Year - chosenProduct.ManufactureYear} years old. 
+It {(chosenProduct.Sold ? "is not available." : $"has been in stock for {timeInStock.Days} days.")}");

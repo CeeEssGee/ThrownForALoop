@@ -4,4 +4,6 @@ public class Product
     public string Color { get; set; }
     public int Price { get; set; }
     public bool Sold { get; set; }
+    public DateTime StockDate { get; set; }
+    public int ManufactureYear { get; set; }
 }
